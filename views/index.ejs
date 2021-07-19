@@ -1,0 +1,22 @@
+<h3><center>Laporan Cabang <%= user.name %> </center></h3>
+<br>
+<div class="d-flex justify-content-center">
+    <div style="width: 400px;">
+        <div class="column">
+            <a href="/tambah-laporan" class="btn btn-primary container" style="float: right; width: 180px;">+ Tambah Laporan</a>
+            <br><br><br>
+            <% laporans.forEach(laporan => { %>
+                <div class="card" style="background-color: white; margin-bottom: 5%;">
+                    <div class="card-body">
+                        <a href="/laporan/<%= laporan.tgl %> ">
+                            <h4><%= laporan.nama %></h4>
+                        </a>
+                        <hr>
+                        <p><%= laporan.date %></p>
+                        <h5><%= laporan.staff %></h5>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
