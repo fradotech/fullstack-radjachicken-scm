@@ -151,13 +151,19 @@ app.post('/tambah-laporan', async (req, res) => {
         date: req.body.date,
         data: {
             s1: {
-                stok: {
+                datang: {
                     d: null,
                     pa: null,
                     pb: null,
                     s: null
                 },
-                datang: {
+                stokAwal: {
+                    d: null,
+                    pa: null,
+                    pb: null,
+                    s: null
+                },
+                stok: {
                     d: null,
                     pa: null,
                     pb: null,
@@ -167,7 +173,8 @@ app.post('/tambah-laporan', async (req, res) => {
                     d: null,
                     pa: null,
                     pb: null,
-                    s: null
+                    s: null,
+                    f: null
                 },
                 laku: {
                     d: null,
@@ -189,19 +196,38 @@ app.post('/tambah-laporan', async (req, res) => {
                 },
             },
             s2: {
-                stok: {
-                    d: null,
-                    pa: null,
-                    pb: null,
-                    s: null
-                },
                 datang: {
                     d: null,
                     pa: null,
                     pb: null,
                     s: null
                 },
+                stokAwal: {
+                    d: null,
+                    pa: null,
+                    pb: null,
+                    s: null
+                },
+                stok: {
+                    d: null,
+                    pa: null,
+                    pb: null,
+                    s: null
+                },
+                masakS2: {
+                    d: null,
+                    pa: null,
+                    pb: null,
+                    s: null,
+                    f: null
+                },
                 masak: {
+                    d: null,
+                    pa: null,
+                    pb: null,
+                    s: null
+                },
+                lakuS2: {
                     d: null,
                     pa: null,
                     pb: null,
@@ -253,12 +279,14 @@ app.get('/edit-laporan/:id', (req, res) => {
 })
 
 app.post('/edit-laporan/:id', (req, res) => {
-    const s1StokD = req.body.s1StokD * 1 + req.body.s1DatangD * 1
-    const s1StokPA = req.body.s1StokPA * 1 + req.body.s1DatangPA * 1
-    const s1StokPB = req.body.s1StokPB * 1 + req.body.s1DatangPB * 1
-    const s1StokS = req.body.s1StokS * 1 + req.body.s1DatangS * 1
+    // Shift 1
 
-    const s1EtalaseD = req.body.s1MasakD * 1 - req.body.s1LakuD * 1
+    const s1StokD = req.body.s1StokAwalD * 1 + req.body.s1DatangD * 1
+    const s1StokPA = req.body.s1StokAwalPA * 1 + req.body.s1DatangPA * 1
+    const s1StokPB = req.body.s1StokAwalPB * 1 + req.body.s1DatangPB * 1
+    const s1StokS = req.body.s1StokAwalS * 1 + req.body.s1DatangS * 1
+
+    const s1EtalaseD = req.body.s1MasakD * 1 - req.body.s1LakuD * 1 - req.body.s1fillet * 1
     const s1EtalasePA = req.body.s1MasakPA * 1 - req.body.s1LakuPA * 1
     const s1EtalasePB = req.body.s1MasakPB * 1 - req.body.s1LakuPB * 1
     const s1EtalaseS = req.body.s1MasakS * 1 - req.body.s1LakuS * 1
@@ -270,20 +298,35 @@ app.post('/edit-laporan/:id', (req, res) => {
     
     // Shift 2
 
-    const s2StokD = s1StokD * 1 + req.body.s2StokD + req.body.s2DatangD * 1
-    const s2StokPA = s1StokPA * 1 + req.body.s2StokPA + req.body.s2DatangPA * 1
-    const s2StokPB = s1StokPB * 1 + req.body.s2StokPB + req.body.s2DatangPB * 1
-    const s2StokS = s1StokS * 1 + req.body.s2StokS + req.body.s2DatangS * 1
+    const s2StokAwalD = s1StokD * 1
+    const s2StokAwalPA = s1StokPA * 1
+    const s2StokAwalPB = s1StokPB * 1
+    const s2StokAwalS = s1StokS * 1
 
-    const s2EtalaseD = req.body.s2MasakD * 1 - req.body.s2LakuD * 1 + s1EtalaseD * 1
-    const s2EtalasePA = req.body.s2MasakPA * 1 - req.body.s2LakuPA * 1 + s1EtalasePA * 1
-    const s2EtalasePB = req.body.s2MasakPB * 1 - req.body.s2LakuPB * 1 + s1EtalasePB * 1
-    const s2EtalaseS = req.body.s2MasakS * 1 - req.body.s2LakuS * 1 + s1EtalaseS * 1
+    const s2StokD = s2StokAwalD * 1 + req.body.s2DatangD * 1
+    const s2StokPA = s2StokAwalPA * 1 + req.body.s2DatangPA * 1
+    const s2StokPB = s2StokAwalPB * 1 + req.body.s2DatangPB * 1
+    const s2StokS = s2StokAwalS * 1 + req.body.s2DatangS * 1
 
-    const s2FreezerD = s2StokD * 1 - req.body.s2MasakD * 1 + s1FreezerD * 1
-    const s2FreezerPA = s2StokPA * 1 - req.body.s2MasakPA * 1 + s1FreezerPA * 1
-    const s2FreezerPB = s2StokPB * 1 - req.body.s2MasakPB * 1 + s1FreezerPB * 1
-    const s2FreezerS = s2StokS * 1 - req.body.s2MasakS * 1 + s1FreezerS * 1
+    const s2MasakD = req.body.s1MasakD * 1 + req.body.s2MasakD * 1
+    const s2MasakPA = req.body.s1MasakPA * 1 + req.body.s2MasakPA * 1
+    const s2MasakPB = req.body.s1MasakPB * 1 + req.body.s2MasakPB * 1
+    const s2MasakS = req.body.s1MasakS * 1 + req.body.s2MasakS * 1
+
+    const s2LakuD = req.body.s1LakuD * 1 + req.body.s2LakuD * 1
+    const s2LakuPA = req.body.s1LakuPA * 1 + req.body.s2LakuPA * 1
+    const s2LakuPB = req.body.s1LakuPB * 1 + req.body.s2LakuPB * 1
+    const s2LakuS = req.body.s1LakuS * 1 + req.body.s2LakuS * 1
+
+    const s2EtalaseD = s2MasakD * 1 - s2LakuD * 1 - req.body.s2fillet * 1
+    const s2EtalasePA = s2MasakPA * 1 - s2LakuPA * 1
+    const s2EtalasePB = s2MasakPB * 1 - s2LakuPB * 1
+    const s2EtalaseS = s2MasakS * 1 - s2LakuS * 1
+
+    const s2FreezerD = s2StokD * 1 - s2MasakD * 1
+    const s2FreezerPA = s2StokPA * 1 - s2MasakPA * 1
+    const s2FreezerPB = s2StokPB * 1 - s2MasakPB * 1
+    const s2FreezerS = s2StokS * 1 - s2MasakS * 1
 
     const laporan = 
     {
@@ -293,23 +336,30 @@ app.post('/edit-laporan/:id', (req, res) => {
         date: req.body.date,
         data: {
             s1: {
-                stok: {
-                    d: s1StokD,
-                    pa: s1StokPA,
-                    pb: s1StokPB,
-                    s: s1StokS
-                },
                 datang: {
                     d: req.body.s1DatangD,
                     pa: req.body.s1DatangPA,
                     pb: req.body.s1DatangPB,
                     s: req.body.s1DatangS
                 },
+                stokAwal: {
+                    d: req.body.s1StokAwalD,
+                    pa: req.body.s1StokAwalPA,
+                    pb: req.body.s1StokAwalPB,
+                    s: req.body.s1StokAwalS
+                },
+                stok: {
+                    d: s1StokD,
+                    pa: s1StokPA,
+                    pb: s1StokPB,
+                    s: s1StokS
+                },
                 masak: {
                     d: req.body.s1MasakD,
                     pa: req.body.s1MasakPA,
                     pb: req.body.s1MasakPB,
-                    s: req.body.s1MasakS
+                    s: req.body.s1MasakS,
+                    f: req.body.s1fillet
                 },
                 laku: {
                     d: req.body.s1LakuD,
@@ -331,29 +381,48 @@ app.post('/edit-laporan/:id', (req, res) => {
                 },
             },
             s2: {
-                stok: {
-                    d: s2StokD,
-                    pa: s2StokPA,
-                    pb: s2StokPB,
-                    s: s2StokS
-                },
                 datang: {
                     d: req.body.s2DatangD,
                     pa: req.body.s2DatangPA,
                     pb: req.body.s2DatangPB,
                     s: req.body.s2DatangS
                 },
-                masak: {
+                stokAwal: {
+                    d: s2StokAwalD,
+                    pa: s2StokAwalPA,
+                    pb: s2StokAwalPB,
+                    s: s2StokAwalS
+                },
+                stok: {
+                    d: s2StokD,
+                    pa: s2StokPA,
+                    pb: s2StokPB,
+                    s: s2StokS
+                },
+                masakS2: {
                     d: req.body.s2MasakD,
                     pa: req.body.s2MasakPA,
                     pb: req.body.s2MasakPB,
-                    s: req.body.s2MasakS
+                    s: req.body.s2MasakS,
+                    f: req.body.s2fillet
                 },
-                laku: {
+                masak: {
+                    d: s2MasakD,
+                    pa: s2MasakPA,
+                    pb: s2MasakPB,
+                    s: s2MasakS
+                },
+                lakuS2: {
                     d: req.body.s2LakuD,
                     pa: req.body.s2LakuPA,
                     pb: req.body.s2LakuPB,
                     s: req.body.s2LakuS
+                },
+                laku: {
+                    d: s2LakuD,
+                    pa: s2LakuPA,
+                    pb: s2LakuPB,
+                    s: s2LakuS
                 },
                 etalase: {
                     d: s2EtalaseD,
@@ -373,16 +442,10 @@ app.post('/edit-laporan/:id', (req, res) => {
 
     Laporan.findOneAndUpdate({ _id: req.params.id }, laporan, { new: true }, async (err, doc) => {
         if(!err) {
-            const laporan = Laporan.findOne({ _id: req.params.id })
-            res.render('edit-laporan', {
-                layout: 'layouts/main-layout',
-                title: 'Radja Chicken',
-                user: req.user,
-                laporan
-            })    
+            res.redirect('/')
         }
         else {
-            console.log(laporan)
+            console.log(err)
         }
     })
 })

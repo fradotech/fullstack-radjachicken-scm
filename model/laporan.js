@@ -15,13 +15,19 @@ const Laporan = mongoose.model('Laporan', {
     },
     data: {
         s1: {
-            stok: {
+            datang: {
                 d: Number,
                 pa: Number,
                 pb: Number,
                 s: Number
             },
-            datang: {
+            stokAwal: {
+                d: Number,
+                pa: Number,
+                pb: Number,
+                s: Number
+            },
+            stok: {
                 d: Number,
                 pa: Number,
                 pb: Number,
@@ -31,7 +37,8 @@ const Laporan = mongoose.model('Laporan', {
                 d: Number,
                 pa: Number,
                 pb: Number,
-                s: Number
+                s: Number,
+                f: Number
             },
             laku: {
                 d: Number,
@@ -53,19 +60,38 @@ const Laporan = mongoose.model('Laporan', {
             },
         },
         s2: {
-            stok: {
-                d: Number,
-                pa: Number,
-                pb: Number,
-                s: Number
-            },
             datang: {
                 d: Number,
                 pa: Number,
                 pb: Number,
                 s: Number
             },
+            stokAwal: {
+                d: Number,
+                pa: Number,
+                pb: Number,
+                s: Number
+            },
+            stok: {
+                d: Number,
+                pa: Number,
+                pb: Number,
+                s: Number
+            },
+            masakS2: {
+                d: Number,
+                pa: Number,
+                pb: Number,
+                s: Number,
+                f: Number
+            },
             masak: {
+                d: Number,
+                pa: Number,
+                pb: Number,
+                s: Number
+            },
+            lakuS2: {
                 d: Number,
                 pa: Number,
                 pb: Number,

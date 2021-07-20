@@ -1,9 +1,9 @@
-<h5>
+<h3>
     <center><%= laporan.nama %></center>
-</h5>
+</h3>
 <br>
 <div class="d-flex justify-content-center">
-    <div class="card" style="width: 400px; background-color: white;">
+    <div class="card" style="width: 500px; background-color: white;">
         <div class="card-body">
             <p><%= laporan.date %></p>
             <form method="POST" action="/edit-laporan/<%= laporan._id %>">
@@ -24,36 +24,47 @@
                             <thead>
                               <tr class="table-primary">
                                 <th scope="col">Ayam</th>
-                                <th scope="col">D</th>
-                                <th scope="col">PA</th>
-                                <th scope="col">PB</th>
-                                <th scope="col">S</th>
+                                <th scope="col">&emsp;D</th>
+                                <th scope="col">&emsp;PA</th>
+                                <th scope="col">&emsp;PB</th>
+                                <th scope="col">&emsp;S</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr>
-                                <th scope="row">Stok</th>
-                                <td><input class="form-control" id="d" name="s1StokD" value="<%= laporan.data.s1.stok.d %>"></td>
-                                <td><input class="form-control" id="pa" name="s1StokPA" value="<%= laporan.data.s1.stok.pa %>"></td>
-                                <td><input class="form-control" id="pb" name="s1StokPB" value="<%= laporan.data.s1.stok.pb %>"></td>
-                                <td><input class="form-control" id="s" name="s1StokS" value="<%= laporan.data.s1.stok.s %>"></td>                              
-                              </tr>
-                              <tr>
-                                <th scope="row">Datang</th>
+                                <th scope="row"><small>Datang</small></th>
                                 <td><input class="form-control" id="d" name="s1DatangD" value="<%= laporan.data.s1.datang.d %>"></td>
                                 <td><input class="form-control" id="pa" name="s1DatangPA" value="<%= laporan.data.s1.datang.pa %>"></td>
                                 <td><input class="form-control" id="pb" name="s1DatangPB" value="<%= laporan.data.s1.datang.pb %>"></td>
                                 <td><input class="form-control" id="s" name="s1DatangS" value="<%= laporan.data.s1.datang.s %>"></td>                              
                               </tr>
                               <tr>
-                                <th scope="row">Digoreng</th>
+                                <th scope="row"><small>Stok Awal</small></th>
+                                <td><input class="form-control" id="d" name="s1StokAwalD" value="<%= laporan.data.s1.stokAwal.d %>"></td>
+                                <td><input class="form-control" id="pa" name="s1StokAwalPA" value="<%= laporan.data.s1.stokAwal.pa %>"></td>
+                                <td><input class="form-control" id="pb" name="s1StokAwalPB" value="<%= laporan.data.s1.stokAwal.pb %>"></td>
+                                <td><input class="form-control" id="s" name="s1StokAwalS" value="<%= laporan.data.s1.stokAwal.s %>"></td>                              
+                              </tr>
+                              <tr>
+                                <th scope="row">Stok</th>
+                                <td>&emsp;<%= laporan.data.s1.stok.d %></td>
+                                <td>&emsp;<%= laporan.data.s1.stok.pa %></td>
+                                <td>&emsp;<%= laporan.data.s1.stok.pb %></td>
+                                <td>&emsp;<%= laporan.data.s1.stok.s %></td>                              
+                              </tr>
+                              <tr>
+                                <th scope="row"><small>Digoreng</small></th>
                                 <td><input class="form-control" id="d" name="s1MasakD" value="<%= laporan.data.s1.masak.d %>"></td>
                                 <td><input class="form-control" id="pa" name="s1MasakPA" value="<%= laporan.data.s1.masak.pa %>"></td>
                                 <td><input class="form-control" id="pb" name="s1MasakPB" value="<%= laporan.data.s1.masak.pb %>"></td>
                                 <td><input class="form-control" id="s" name="s1MasakS" value="<%= laporan.data.s1.masak.s %>"></td>                              
                               </tr>
                               <tr>
-                                <th scope="row">Laku</th>
+                                <th scope="row"><small>Fillet</small></th>
+                                <td><input class="form-control" id="s" name="s1fillet" value="<%= laporan.data.s1.masak.f %>"></td>
+                              </tr>
+                              <tr>
+                                <th scope="row"><strong style="color: blue;">LAKU</strong></th>
                                 <td><input class="form-control" id="d" name="s1LakuD" value="<%= laporan.data.s1.laku.d %>"></td>
                                 <td><input class="form-control" id="pa" name="s1LakuPA" value="<%= laporan.data.s1.laku.pa %>"></td>
                                 <td><input class="form-control" id="pb" name="s1LakuPB" value="<%= laporan.data.s1.laku.pb %>"></td>
@@ -61,17 +72,17 @@
                               </tr>
                               <tr>
                                 <th scope="row">Etalase</th>
-                                <td><p id="d" name="s1EtalaseD" value="<%= laporan.data.s1.etalase.d %>"></td>
-                                <td><p id="pa" name="s1EtalasePA" value="<%= laporan.data.s1.etalase.pa %>"></td>
-                                <td><p id="pb" name="s1EtalasePB" value="<%= laporan.data.s1.etalase.pb %>"></td>
-                                <td><p id="s" name="s1EtalaseS" value="<%= laporan.data.s1.etalase.s %>"></td>                              
+                                <td>&emsp;<%= laporan.data.s1.etalase.d %></td>
+                                <td>&emsp;<%= laporan.data.s1.etalase.pa %></td>
+                                <td>&emsp;<%= laporan.data.s1.etalase.pb %></td>
+                                <td>&emsp;<%= laporan.data.s1.etalase.s %></td>                              
                               </tr>
                               <tr>
                                 <th scope="row">Freezer</th>
-                                <td><p id="d" name="s1SimpanD" value="<%= laporan.data.s1.simpan.d %>"></td>
-                                <td><p id="pa" name="s1SimpanPA" value="<%= laporan.data.s1.simpan.pa %>"></td>
-                                <td><p id="pb" name="s1SimpanPB" value="<%= laporan.data.s1.simpan.pb %>"></td>
-                                <td><p id="s" name="s1SimpanS" value="<%= laporan.data.s1.simpan.s %>"></td>                              
+                                <td>&emsp;<%= laporan.data.s1.simpan.d %></td>
+                                <td>&emsp;<%= laporan.data.s1.simpan.pa %></td>
+                                <td>&emsp;<%= laporan.data.s1.simpan.pb %></td>
+                                <td>&emsp;<%= laporan.data.s1.simpan.s %></td>                              
                               </tr>
                             </tbody>
                           </table>
@@ -86,54 +97,79 @@
                             <thead>
                               <tr class="table-primary">
                                 <th scope="col">Ayam</th>
-                                <th scope="col">D</th>
-                                <th scope="col">PA</th>
-                                <th scope="col">PB</th>
-                                <th scope="col">S</th>
+                                <th scope="col">&emsp;D</th>
+                                <th scope="col">&emsp;PA</th>
+                                <th scope="col">&emsp;PB</th>
+                                <th scope="col">&emsp;S</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr>
-                                <th scope="row">Stok</th>
-                                <td><p class="form-control" id="d" name="s2StokD" value="<%= laporan.data.s2.stok.d %>"></td>
-                                <td><p class="form-control" id="pa" name="s2StokPA" value="<%= laporan.data.s2.stok.pa %>"></td>
-                                <td><p class="form-control" id="pb" name="s2StokPB" value="<%= laporan.data.s2.stok.pb %>"></td>
-                                <td><p class="form-control" id="s" name="s2StokS" value="<%= laporan.data.s2.stok.s %>"></td>                              
-                              </tr>
-                              <tr>
-                                <th scope="row">Datang</th>
+                                <th scope="row"><small>Datang</small></th>
                                 <td><input class="form-control" id="d" name="s2DatangD" value="<%= laporan.data.s2.datang.d %>"></td>
                                 <td><input class="form-control" id="pa" name="s2DatangPA" value="<%= laporan.data.s2.datang.pa %>"></td>
                                 <td><input class="form-control" id="pb" name="s2DatangPB" value="<%= laporan.data.s2.datang.pb %>"></td>
                                 <td><input class="form-control" id="s" name="s2DatangS" value="<%= laporan.data.s2.datang.s %>"></td>                              
                               </tr>
                               <tr>
-                                <th scope="row">Digoreng</th>
-                                <td><input class="form-control" id="d" name="s2MasakD" value="<%= laporan.data.s2.masak.d %>"></td>
-                                <td><input class="form-control" id="pa" name="s2MasakPA" value="<%= laporan.data.s2.masak.pa %>"></td>
-                                <td><input class="form-control" id="pb" name="s2MasakPB" value="<%= laporan.data.s2.masak.pb %>"></td>
-                                <td><input class="form-control" id="s" name="s2MasakS" value="<%= laporan.data.s2.masak.s %>"></td>                              
+                                <th scope="row"><small>Stok Awal</small></th>
+                                <td>&emsp;<%= laporan.data.s2.stokAwal.d %></td>
+                                <td>&emsp;<%= laporan.data.s2.stokAwal.pa %></td>
+                                <td>&emsp;<%= laporan.data.s2.stokAwal.pb %></td>
+                                <td>&emsp;<%= laporan.data.s2.stokAwal.s %></td>                              
                               </tr>
                               <tr>
-                                <th scope="row">Laku</th>
-                                <td><input class="form-control" id="d" name="s2LakuD" value="<%= laporan.data.s2.laku.d %>"></td>
-                                <td><input class="form-control" id="pa" name="s2LakuPA" value="<%= laporan.data.s2.laku.pa %>"></td>
-                                <td><input class="form-control" id="pb" name="s2LakuPB" value="<%= laporan.data.s2.laku.pb %>"></td>
-                                <td><input class="form-control" id="s" name="s2LakuS" value="<%= laporan.data.s2.laku.s %>"></td>                              
+                                <th scope="row">Stok</th>
+                                <td>&emsp;<%= laporan.data.s2.stok.d %></td>
+                                <td>&emsp;<%= laporan.data.s2.stok.pa %></td>
+                                <td>&emsp;<%= laporan.data.s2.stok.pb %></td>
+                                <td>&emsp;<%= laporan.data.s2.stok.s %></td>                              
+                              </tr>
+                              <tr>
+                                <th scope="row"><small>Digoreng</small></th>
+                                <td><input class="form-control" id="d" name="s2MasakD" value="<%= laporan.data.s2.masakS2.d %>"></td>
+                                <td><input class="form-control" id="pa" name="s2MasakPA" value="<%= laporan.data.s2.masakS2.pa %>"></td>
+                                <td><input class="form-control" id="pb" name="s2MasakPB" value="<%= laporan.data.s2.masakS2.pb %>"></td>
+                                <td><input class="form-control" id="s" name="s2MasakS" value="<%= laporan.data.s2.masakS2.s %>"></td>                              
+                              </tr>
+                              <tr>
+                                <th scope="row"><small>Fillet</small></th>
+                                <td><input class="form-control" id="s" name="s2fillet" value="<%= laporan.data.s2.masakS2.f %>"></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Total Goreng</th>
+                                <td>&emsp;<%= laporan.data.s2.masak.d %></td>
+                                <td>&emsp;<%= laporan.data.s2.masak.pa %></td>
+                                <td>&emsp;<%= laporan.data.s2.masak.pb %></td>
+                                <td>&emsp;<%= laporan.data.s2.masak.s %></td>                              
+                              </tr>
+                              <tr>
+                                <th scope="row"><small>Laku</small></th>
+                                <td><input class="form-control" id="d" name="s2LakuD" value="<%= laporan.data.s2.lakuS2.d %>"></td>
+                                <td><input class="form-control" id="pa" name="s2LakuPA" value="<%= laporan.data.s2.lakuS2.pa %>"></td>
+                                <td><input class="form-control" id="pb" name="s2LakuPB" value="<%= laporan.data.s2.lakuS2.pb %>"></td>
+                                <td><input class="form-control" id="s" name="s2LakuS" value="<%= laporan.data.s2.lakuS2.s %>"></td>                              
+                              </tr>
+                              <tr>
+                                <th scope="row"><strong style="color: blue;">TOTAL LAKU</strong></th>
+                                <td>&emsp;<%= laporan.data.s2.laku.d %></td>
+                                <td>&emsp;<%= laporan.data.s2.laku.pa %></td>
+                                <td>&emsp;<%= laporan.data.s2.laku.pb %></td>
+                                <td>&emsp;<%= laporan.data.s2.laku.s %></td>                              
                               </tr>
                               <tr>
                                 <th scope="row">Etalase</th>
-                                <td><p id="d" name="s2EtalaseD" value="<%= laporan.data.s2.etalase.d %>"></td>
-                                <td><p id="pa" name="s2EtalasePA" value="<%= laporan.data.s2.etalase.pa %>"></td>
-                                <td><p id="pb" name="s2EtalasePB" value="<%= laporan.data.s2.etalase.pb %>"></td>
-                                <td><p id="s" name="s2EtalaseS" value="<%= laporan.data.s2.etalase.s %>"></td>                              
+                                <td>&emsp;<%= laporan.data.s2.etalase.d %></td>
+                                <td>&emsp;<%= laporan.data.s2.etalase.pa %></td>
+                                <td>&emsp;<%= laporan.data.s2.etalase.pb %></td>
+                                <td>&emsp;<%= laporan.data.s2.etalase.s %></td>                              
                               </tr>
                               <tr>
                                 <th scope="row">Freezer</th>
-                                <td><p id="d" name="s2SimpanD" value="<%= laporan.data.s2.simpan.d %>"></td>
-                                <td><p id="pa" name="s2SimpanPA" value="<%= laporan.data.s2.simpan.pa %>"></td>
-                                <td><p id="pb" name="s2SimpanPB" value="<%= laporan.data.s2.simpan.pb %>"></td>
-                                <td><p id="s" name="s2SimpanS" value="<%= laporan.data.s2.simpan.s %>"></td>                              
+                                <td>&emsp;<%= laporan.data.s2.simpan.d %></td>
+                                <td>&emsp;<%= laporan.data.s2.simpan.pa %></td>
+                                <td>&emsp;<%= laporan.data.s2.simpan.pb %></td>
+                                <td>&emsp;<%= laporan.data.s2.simpan.s %></td>                              
                               </tr>
                             </tbody>
                           </table>
