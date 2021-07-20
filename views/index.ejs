@@ -8,7 +8,7 @@
             <% laporans.forEach(laporan => { %>
                 <div class="card" style="background-color: white; margin-bottom: 5%;">
                     <div class="card-body">
-                        <a href="/laporan/<%= laporan.tgl %> ">
+                        <a href="/edit-laporan/<%= laporan._id %>">
                             <h4><%= laporan.nama %></h4>
                         </a>
                         <hr>
